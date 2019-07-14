@@ -42,7 +42,7 @@ tmux_conf_new_session_prompt=false
 # RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
 #  - false (default)
-tmux_conf_theme_24b_colour=true
+tmux_conf_theme_24b_colour=false
 
 # window style
 tmux_conf_theme_window_fg='default'
@@ -98,7 +98,8 @@ tmux_conf_theme_status_attr='none'
 #     - #{hostname_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_terminal_title='#h ❐ #S ● #I #W'
+# tmux_conf_theme_terminal_title='#h ❐ #S ● #I #W'
+tmux_conf_theme_terminal_title='#h < #S #I #W >'
 
 # window status style
 #   - built-in variables are:
@@ -148,9 +149,9 @@ tmux_conf_theme_window_status_last_attr='none'
 # status left/right sections separators
 tmux_conf_theme_left_separator_main=''
 tmux_conf_theme_left_separator_sub='|'
-tmux_conf_theme_right_separator_main=''
+tmux_conf_theme_right_separator_main=' '
 tmux_conf_theme_right_separator_sub='|'
-tmux_conf_theme_left_separator_main=''  # /!\ you don't need to install Powerline
+# tmux_conf_theme_left_separator_main=''  # /!\ you don't need to install Powerline
 tmux_conf_theme_left_separator_sub=''   #   you only need fonts patched with
 # tmux_conf_theme_right_separator_main='' #   Powerline symbols or the standalone
 tmux_conf_theme_right_separator_sub='|'  #   PowerlineSymbols.otf font
@@ -178,7 +179,7 @@ tmux_conf_theme_right_separator_sub='|'  #   PowerlineSymbols.otf font
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=' ❐ #S'
+tmux_conf_theme_status_left=' [ #S ] '
 tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} , %R , %d %b | #{username}#{root} '
 
 # status left style
@@ -280,15 +281,15 @@ set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
-set -g status-keys vi
-set -g mode-keys vi
+# set -g status-keys vi
+# set -g mode-keys vi
 
-set-window-option -g mode-keys vi
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+# set-window-option -g mode-keys vi
+# bind-key -T copy-mode-vi 'v' send -X begin-selection
+# bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
 
-# replace C-b by C-a instead of using both prefixes
+#replace C-b by C-a instead of using both prefixes
  set -gu prefix2
  unbind C-a
  unbind C-b
@@ -310,7 +311,9 @@ bind -T off C-q \
   set -u prefix \;\
   set -u key-table \;\
   refresh-client -S
-  
-wg_is_keys_off="#[fg=$color_light,bg=$color_window_off_indicator]#([ $(tmux show-option -qv key-table) = 'off' ] && echo 'OFF')#[default]"
 
-set -g status-right "$wg_is_keys_off  #{sysstat_loadavg} | $wg_user_host"
+# wg_is_keys_off="#[fg=$color_light,bg=$color_window_off_indicator]#([ $(tmux show-option -qv key-table) = 'off' ] && echo 'OFF')#[default]"
+
+# set -g status-right "$wg_is_keys_off  #{sysstat_loadavg} | $wg_user_host"
+set -sg escape-time 0
+set-option repeat-time 5

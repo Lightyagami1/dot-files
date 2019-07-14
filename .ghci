@@ -1,0 +1,18 @@
+import Control.Applicative
+import Control.Monad
+
+import Data.String
+import Data.Char
+import Data.List
+import Data.Monoid
+
+:set prompt "\ESC[1;36mλ \ESC[m" 
+:set +t
+:set +m 
+:set editor vim
+:set -XTypeApplications
+
+let ghciEscapeShellArg arg = "'" ++ concatMap (\c -> if c == '\'' then "'\"'\"'" else [c]) arg ++ "'"
+
+:def! search return . (":! hoogle " ++ ) . ghciEscapeShellArg
+:def! searchi return . (":! hoogle --info " ++) . ghciEscapeShellArg

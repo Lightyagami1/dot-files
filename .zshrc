@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
@@ -11,13 +12,15 @@ export ZSH="/Users/sauravk/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
 # ZSH_THEME="sunrise"
-ZSH_THEME=random
+ZSH_THEME="pi"
+# ZSH_THEME=random
+# ZSH_THEME="gallois"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "pi" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "pi" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -35,7 +38,7 @@ export UPDATE_ZSH_DAYS=13
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
- DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -51,19 +54,20 @@ export UPDATE_ZSH_DAYS=13
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   colored-man-pages
-  zsh-autosuggestions
+#  zsh-autosuggestions
   colorize
   fzf
-  iterm2
-  zsh-syntax-highlighting
+#  zsh-syntax-highlighting
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
-alias ls='ls -G'
+alias ls='ls -Ghf'
 
 # Run on new shell
 # if [ `which fortune` ]; then
@@ -73,8 +77,8 @@ alias ls='ls -G'
 # fi
 
 alias vi=nvim
-alias emacs='emacs -nw'
 alias du='du -shc *'
+export EDITOR=nvim
 
 export P4CONFIG=.p4config
 export P4EDITOR=nvim
@@ -82,8 +86,23 @@ export P4DIFF='vimdiff -d'
 
 if [ -e /Users/sauravk/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/sauravk/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 [ -f ~/.fzf/fzf.zsh ] && source ~/.fzf/fzf.zsh
-RPROMPT="❮%@"
+# RPROMPT="\e[0;30m]❮ %@ %f"
+#RPROMPT='%{$fg_bold[magenta]%}: %@ %f'
+RPROMPT='%{$fg_bold[red]%}✖ %@%{$reset_color%}%'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+setopt extendedglob
+# to remove all files except one rm -- ^(<file-name>)
+
+task
+
+alias vmw='cd ~/jungle/vmware'
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+48); do
+  compinit
+done
+compinit -C
+#zprof
+
+alias shenv="nix-shell -p \"haskellPackages.ghcWithPackages(pkgs: with pkgs; [ ghcid hoogle hlint])\" "
