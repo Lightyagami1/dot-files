@@ -34,13 +34,11 @@ Plug 'majutsushi/tagbar'
 " Plug 'airblade/vim-gitgutter' " Highlights altered lines in `gutter`
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'liuchengxu/vista.vim'
 Plug 'tpope/vim-commentary'
 " Plug 'flazz/vim-colorschemes' " A collection of colorschemes.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
-" Plug 'kien/rainbow_parentheses.vim'
-" Plug 'sheerun/vim-polyglot'   " Indentation syntax for languages
+Plug 'sheerun/vim-polyglot'   " Indentation syntax for languages
 Plug 'simplyzhao/cscope_maps.vim'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
@@ -61,8 +59,8 @@ set shiftwidth=2
 set wildignore=*.swp,*.bak    " Exclude these files from *
 
 colorscheme Papercolor
-set background=light
-set background=dark
+" set background=light
+" set background=dark
 set termguicolors             " Turn on TrueColor
 
 set wildchar=<Tab> wildmenu wildmode=list:longest,full
@@ -81,7 +79,7 @@ set undofile
 set undodir=~/.config/undodir " neovim specific
 
 set formatprg=par "use gqip or gwip for vim's own formatter
-set textwidth=78
+" set textwidth=78
 " set formatoptions+=t "Automatically break at textwidth
 
 let g:netrw_banner=0 " saner netrw
@@ -92,7 +90,7 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 20
 autocmd FileType netrw setl bufhidden=wipe
 
-set clipboard=unnamed " now just yank instead of :w !pbcopy
+"set clipboard=unnamed " now just yank instead of :w !pbcopy
 set showmatch "show matching braces
 " set foldmethod=syntax " fold based on indent
 set pastetoggle=<leader>V " set paste toggle
@@ -111,36 +109,11 @@ endif
 " let g:vimwiki_list = [{'path': '~/vimwiki/',
 "                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-" let g:rbpt_colorpairs = [
-"     \ ['brown',       'RoyalBlue3'],
-"     \ ['Darkblue',    'SeaGreen3'],
-"     \ ['darkgray',    'DarkOrchid3'],
-"     \ ['darkgreen',   'firebrick3'],
-"     \ ['darkcyan',    'RoyalBlue3'],
-"     \ ['darkred',     'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['brown',       'firebrick3'],
-"     \ ['gray',        'RoyalBlue3'],
-"     \ ['black',       'SeaGreen3'],
-"     \ ['darkmagenta', 'DarkOrchid3'],
-"     \ ['Darkblue',    'firebrick3'],
-"     \ ['darkgreen',   'RoyalBlue3'],
-"     \ ['darkcyan',    'SeaGreen3'],
-"     \ ['darkred',     'DarkOrchid3'],
-"     \ ['red',         'firebrick3'],
-"     \ ]
-" let g:rbpt_max = 16
-" let g:rbpt_loadcmd_toggle = 0
-" au VimEnter * RainbowParenthesesToggle
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
-
-noremap ,cpp : -1read $HOME/jungle/train/skeleton.cpp<CR>10j
+noremap ,cpp : -1read $HOME/jungle/train/skeleton.cpp<CR>12j
 
 set tags=./tags;,tags;$HOME
 
-if strftime("%H") < 14 && strftime("%H") > 7
+if strftime("%H") < 11 && strftime("%H") > 9
   set background=light
   :hi CursorLine guibg=lightblue ctermbg=lightblue
   set nolist
@@ -163,3 +136,7 @@ function! s:show_documentation()
 endfunction
 
 set nocscopeverbose "don't show added cscope message
+
+" make folds consistent
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
