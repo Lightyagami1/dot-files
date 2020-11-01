@@ -1,6 +1,6 @@
 #zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$HOME/jungle/blockChain_Upgrad/assignment2/fabric-samples/bin:$PATH
 
 #zstyle :omz:plugins:ssh-agent agent-forwarding on
 # Path to your oh-my-zsh installation.
@@ -30,7 +30,7 @@ ZSH_THEME="pi"
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=13
@@ -57,7 +57,8 @@ plugins=(
 #  zsh-autosuggestions
   colorize
   fzf
-#  zsh-syntax-highlighting
+  zsh-syntax-highlighting
+  themes
   z
 )
 
@@ -77,14 +78,15 @@ alias ls='ls -Ghf'
 # fi
 
 alias vi=nvim
+#alias emacs=emacs-26.3
+alias g++='g++ -std=c++17'
+#alias emacs='emacs-26.2 --daemon'
 alias du='du -shc *'
 export EDITOR=nvim
 
 export P4CONFIG=.p4config
 export P4EDITOR=nvim
 export P4DIFF='vimdiff -d'
-
-if [ -e /Users/sauravk/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/sauravk/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 [ -f ~/.fzf/fzf.zsh ] && source ~/.fzf/fzf.zsh
 # RPROMPT="\e[0;30m]❮ %@ %f"
@@ -95,9 +97,9 @@ RPROMPT='%{$fg_bold[red]%}✖ %@%{$reset_color%}%'
 setopt extendedglob
 # to remove all files except one rm -- ^(<file-name>)
 
-task
+#task
 
-alias vmw='cd ~/jungle/vmware'
+alias me='cd ~/jungle'
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+48); do
   compinit
@@ -105,4 +107,23 @@ done
 compinit -C
 #zprof
 
-alias shenv="nix-shell -p \"haskellPackages.ghcWithPackages(pkgs: with pkgs; [ ghcid hoogle hlint])\" "
+#alias hask="nix-shell -p \"haskellPackages.ghcWithPackages(pkgs: with pkgs; [ ghcid hoogle hlint ])\" "
+
+# if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+#   source ~/.config/exercism/exercism_completion.bash
+# fi
+export PATH=/Users/sauravk/vmware/debug-tools:/Users/sauravk/vmware/debug-tools/modules:$PATH
+if [ /Users/sauravk/.local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+alias md5sum='md5 -r'
+alias lo='cmatrix'
+
+
+# wcp vars for go lang
+export GOPATH=$HOME/wcp
+export PATH=$PATH:$GOPATH/bin
+# PATH="/usr/local/opt/go@1.12/bin:$PATH"
+PATH="/usr/local/opt/gettext/bin:$PATH"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
