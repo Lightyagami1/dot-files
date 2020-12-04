@@ -52,7 +52,7 @@ Plug 'godlygeek/tabular'      " Align text :Tabularize /{char} to align
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim' " Fzf for fuzzy search
 Plug 'majutsushi/tagbar'
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'sainnhe/gruvbox-material'
 Plug 'sheerun/vim-polyglot'   " Indentation syntax for languages
 " Plug 'simplyzhao/cscope_maps.vim'
@@ -63,6 +63,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
+Plug 'ntpeters/vim-better-whitespace'
 " Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
@@ -208,3 +209,6 @@ map <C-s> :source ~/.config/nvim/init.vim<CR>
 
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

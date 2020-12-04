@@ -6,9 +6,9 @@ import Data.Char
 import Data.List
 import Data.Monoid
 
-:set prompt "\ESC[1;36mλ \ESC[m" 
+:set prompt "\ESC[1;36mλ \ESC[m"
 :set +t
-:set +m 
+:set +m
 :set editor vim
 :set -XTypeApplications
 
