@@ -1,3 +1,4 @@
+# vim: filetype=tmux.conf
 # https://github.com/gpakosz/.tmux
 # (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
 #         without any warranty.
@@ -297,7 +298,7 @@ set -g mouse on
  bind C-a send-prefix
 
 # move status line to top
-set -g status-position top
+# set -g status-position top
 set -g default-shell /bin/zsh
 
 
@@ -314,6 +315,12 @@ bind -T off C-q \
 
 # wg_is_keys_off="#[fg=$color_light,bg=$color_window_off_indicator]#([ $(tmux show-option -qv key-table) = 'off' ] && echo 'OFF')#[default]"
 
-# set -g status-right "$wg_is_keys_off  #{sysstat_loadavg} | $wg_user_host"
-set -sg escape-time 0
+set -g status-right "$wg_is_keys_off  #{sysstat_loadavg} | $wg_user_host"
+set -s escape-time 0
 set-option repeat-time 5
+
+bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
+
+# set -g status-left "#[bg=red]#{s/root//:client_key_table}"
+set -g @resurrect-strategy-nvim 'session'
