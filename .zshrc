@@ -80,12 +80,10 @@ source $ZSH/oh-my-zsh.sh
 
 #alias vi=~/.local/bin/nvim-osx64/bin/nvim
 alias vi=nvim
-#alias emacs=emacs-26.3
 # alias g++='g++-11 -std=c++17'
-#alias emacs='emacs-26.2 --daemon'
 alias du='du -shc *'
-alias gist='git st'
-alias gits='git st'
+alias gist='git status'
+alias gits='git status'
 alias gitd='git diff'
 alias gitds='git diff --staged'
 alias gitdf='git difftool'
@@ -152,29 +150,6 @@ home() {
   git checkout home
   popd
 }
-
-export NPM_TOKEN="7d954c78-32ec-4759-81d3-da00c379a3ce"
-# export JFROG_AUTH="c2F1cmF2LmtAbnV0YW5peC5jb206QUtDcDhrcjFFbkszV2JEYWJKSjdTcmJrRFVoV205QWNyVUxVYXhmTE5mTXhOZ1ZqU25jTnM4bXY3MWc2Tmt2SEFCMWRDaFpocQo="
-export JFROG_AUTH="ZGVlcGFrbGFsLnRwckBudXRhbml4LmNvbTpBS0NwOGtxV3Q5aHdyNGdSWXkxNGNLVktFdTk2OXRWOEdnV3FrMWNocEZNZU1FVXZUQk1SRW9mOWt2bWt5aWQ2VXp6dEt3VEpV"
-export JFROG_EMAIL="deepaklal.tpr@nutanix.com"
-export JFROG_CERT_BUNDLE_PATH="/Users/sk/cacert.pem"
-
-export PATH="/usr/local/opt/node@12/bin:$PATH"
-
-
-source /Applications/FDS/FDS6/bin/FDS6VARS.sh
-source /Applications/FDS/FDS6/bin/SMV6VARS.sh
-
-export OMP_NUM_THREADS=4
-
-# unlimit stack for OSX
-ulimit -s 65532
-
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/sk/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-export PATH="/usr/local/opt/mongodb-community@5.0/bin:$PATH"
 
 [[ -s "/Users/sk/.gvm/scripts/gvm" ]] && source "/Users/sk/.gvm/scripts/gvm"
 # this has to be last line
