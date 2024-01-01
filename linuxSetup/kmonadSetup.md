@@ -74,3 +74,20 @@ B: LED=1f
 
 so it's there in list, but it has mouse in it's name too.
 At this moment, little hit and trial helped in finding correct one.
+
+
+for reason beyond my comprehension, need to run `kmonad` with sudo
+`sudo /home/sroot/.local/bin/kmonad ~/.config/kmonad/config.kbd`
+
+
+to start the kmonad process at startup add using cron job
+
+`crontab -e`
+
+add the kmonad and config file with absolute path, it'll work
+tried using systemd,  but couldn't get it working
+
+Add below content in `crontab -e` file
+```
+@reboot /home/sroot/.local/bin/kmonad  /home/sroot/.config/kmonad/config.kbd
+```
