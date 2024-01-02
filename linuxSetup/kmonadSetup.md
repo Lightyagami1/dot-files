@@ -119,25 +119,25 @@ https://github.com/kmonad/kmonad/pull/716#issuecomment-1732419231
 )
 
 (defalias
-  lctlz (tap-hold-next 150 z lctl)
-  rctl/ (tap-hold-next 150 / rctl)
+  lctlz (tap-hold-next 180 z lctl)
+  rctl/ (tap-hold-next 180 / rctl)
   )
 
 (defsrc
-  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12    pause  prnt  ins  del
-  `     1    2    3    4    5    6    7    8    9    0    -     =      bspc              home
-  tab   q    w    e    r    t    y    u    i    o    p    [     ]      ret               pgup
-  caps  a    s    d    f    g    h    j    k    l    ;    '     \                        pgdn
-  lsft  z    x    c    v    b    n    m    ,    .    /    rsft         up                end
-  lctl  lmet lalt      spc       ralt cmps rctl                 left   down   rght
-  )
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  fn   lctl lalt lmet           spc            rmet ralt left down rght
+)
 
 (deflayer base
-  esc    f1    f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12    pause  prnt  ins  del
-  `       1     2    3    4    5    6    7    8    9    0    -     =      bspc              home
-  tab     q     w    e    r    t    y    u    i    o    p    [     ]      ret               pgup
-  bspc     a     s    d    f    g    h    j    k    l    ;    '     \                        pgdn
-  lsft    @lctlz     x    c    v    b    n    m    ,    .    @rctl/    rsft         up                end
-  lctl    lmet  lalt      spc       ralt cmps rctl                 left   down   rght
-  )
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  bspc a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft @lctlz    x    c    v    b    n    m    ,    .    @rctl/    rsft up
+  fn   lctl lalt lmet           spc            rmet ralt left down rght
+)
 ```
