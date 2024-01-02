@@ -91,3 +91,53 @@ Add below content in `crontab -e` file
 ```
 @reboot /home/sroot/.local/bin/kmonad  /home/sroot/.config/kmonad/config.kbd
 ```
+
+
+
+#Interesting thing is it works for mac also
+-------------------------------------------
+
+follow commands mentioned in comment to install kmonad and relevant dependencies.
+https://github.com/kmonad/kmonad/pull/716#issuecomment-1854615255
+
+example of entire config file to get kmonad working.
+https://gist.github.com/amiorin/4c74f63fe599a1dcbd0933628df1aac9
+
+
+https://github.com/kmonad/kmonad/pull/716#issuecomment-1732419231
+
+```
+(defcfg
+  input  (iokit-name "Apple Internal Keyboard / Trackpad")
+  output (kext)
+
+  ;; Comment this if you want unhandled events not to be emitted
+  fallthrough false
+
+  ;; Set this to false to disable any command-execution in KMonad
+  allow-cmd true
+)
+
+(defalias
+  lctlz (tap-hold-next 150 z lctl)
+  rctl/ (tap-hold-next 150 / rctl)
+  )
+
+(defsrc
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12    pause  prnt  ins  del
+  `     1    2    3    4    5    6    7    8    9    0    -     =      bspc              home
+  tab   q    w    e    r    t    y    u    i    o    p    [     ]      ret               pgup
+  caps  a    s    d    f    g    h    j    k    l    ;    '     \                        pgdn
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft         up                end
+  lctl  lmet lalt      spc       ralt cmps rctl                 left   down   rght
+  )
+
+(deflayer base
+  esc    f1    f2   f3   f4   f5   f6   f7   f8   f9   f10  f11   f12    pause  prnt  ins  del
+  `       1     2    3    4    5    6    7    8    9    0    -     =      bspc              home
+  tab     q     w    e    r    t    y    u    i    o    p    [     ]      ret               pgup
+  bspc     a     s    d    f    g    h    j    k    l    ;    '     \                        pgdn
+  lsft    @lctlz     x    c    v    b    n    m    ,    .    @rctl/    rsft         up                end
+  lctl    lmet  lalt      spc       ralt cmps rctl                 left   down   rght
+  )
+```
