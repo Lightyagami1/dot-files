@@ -1,0 +1,14 @@
+
+
+Need to create 2 files 
+initDark.vim
+initLight.vim
+
+
+and no init.vim
+as we will be creating a symlink to it
+
+
+
+Also in linux -h flag is not needed in zshrc will creating link using ln
+
